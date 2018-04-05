@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://guiaTv.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://guiaTv.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://guiaTv.org/">
+      <s:element name="CadastrarCanal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="canal" type="tns:Canal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Canal">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nome" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CadastrarCanalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CadastrarCanalResult" type="tns:Canal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CadastrarPrograma">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="programa" type="tns:Programa" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdCanal" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Programa">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Titulo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descricao" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataHora" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CadastrarProgramaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CadastrarProgramaResult" type="tns:Programa" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TodosCanais">
+        <s:complexType />
+      </s:element>
+      <s:element name="TodosCanaisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TodosCanaisResult" type="tns:ArrayOfCanal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCanal">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Canal" nillable="true" type="tns:Canal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TodaProgramacaoIdCanal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdCanal" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TodaProgramacaoIdCanalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TodaProgramacaoIdCanalResult" type="tns:ArrayOfPrograma" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPrograma">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Programa" nillable="true" type="tns:Programa" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TodaProgramacaoPorData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="data" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TodaProgramacaoPorDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TodaProgramacaoPorDataResult" type="tns:ArrayOfPrograma" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TodaProgramacaoIdCanalData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdCanal" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="data" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TodaProgramacaoIdCanalDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TodaProgramacaoIdCanalDataResult" type="tns:ArrayOfPrograma" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoverCanal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdCanal" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoverCanalResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="RemoverPrograma">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdPrograma" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoverProgramaResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CadastrarCanalSoapIn">
+    <wsdl:part name="parameters" element="tns:CadastrarCanal" />
+  </wsdl:message>
+  <wsdl:message name="CadastrarCanalSoapOut">
+    <wsdl:part name="parameters" element="tns:CadastrarCanalResponse" />
+  </wsdl:message>
+  <wsdl:message name="CadastrarProgramaSoapIn">
+    <wsdl:part name="parameters" element="tns:CadastrarPrograma" />
+  </wsdl:message>
+  <wsdl:message name="CadastrarProgramaSoapOut">
+    <wsdl:part name="parameters" element="tns:CadastrarProgramaResponse" />
+  </wsdl:message>
+  <wsdl:message name="TodosCanaisSoapIn">
+    <wsdl:part name="parameters" element="tns:TodosCanais" />
+  </wsdl:message>
+  <wsdl:message name="TodosCanaisSoapOut">
+    <wsdl:part name="parameters" element="tns:TodosCanaisResponse" />
+  </wsdl:message>
+  <wsdl:message name="TodaProgramacaoIdCanalSoapIn">
+    <wsdl:part name="parameters" element="tns:TodaProgramacaoIdCanal" />
+  </wsdl:message>
+  <wsdl:message name="TodaProgramacaoIdCanalSoapOut">
+    <wsdl:part name="parameters" element="tns:TodaProgramacaoIdCanalResponse" />
+  </wsdl:message>
+  <wsdl:message name="TodaProgramacaoPorDataSoapIn">
+    <wsdl:part name="parameters" element="tns:TodaProgramacaoPorData" />
+  </wsdl:message>
+  <wsdl:message name="TodaProgramacaoPorDataSoapOut">
+    <wsdl:part name="parameters" element="tns:TodaProgramacaoPorDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="TodaProgramacaoIdCanalDataSoapIn">
+    <wsdl:part name="parameters" element="tns:TodaProgramacaoIdCanalData" />
+  </wsdl:message>
+  <wsdl:message name="TodaProgramacaoIdCanalDataSoapOut">
+    <wsdl:part name="parameters" element="tns:TodaProgramacaoIdCanalDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoverCanalSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoverCanal" />
+  </wsdl:message>
+  <wsdl:message name="RemoverCanalSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoverCanalResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoverProgramaSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoverPrograma" />
+  </wsdl:message>
+  <wsdl:message name="RemoverProgramaSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoverProgramaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="GuiaProgramacaoTVSoap">
+    <wsdl:operation name="CadastrarCanal">
+      <wsdl:input message="tns:CadastrarCanalSoapIn" />
+      <wsdl:output message="tns:CadastrarCanalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarPrograma">
+      <wsdl:input message="tns:CadastrarProgramaSoapIn" />
+      <wsdl:output message="tns:CadastrarProgramaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TodosCanais">
+      <wsdl:input message="tns:TodosCanaisSoapIn" />
+      <wsdl:output message="tns:TodosCanaisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TodaProgramacaoIdCanal">
+      <wsdl:input message="tns:TodaProgramacaoIdCanalSoapIn" />
+      <wsdl:output message="tns:TodaProgramacaoIdCanalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TodaProgramacaoPorData">
+      <wsdl:input message="tns:TodaProgramacaoPorDataSoapIn" />
+      <wsdl:output message="tns:TodaProgramacaoPorDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TodaProgramacaoIdCanalData">
+      <wsdl:input message="tns:TodaProgramacaoIdCanalDataSoapIn" />
+      <wsdl:output message="tns:TodaProgramacaoIdCanalDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoverCanal">
+      <wsdl:input message="tns:RemoverCanalSoapIn" />
+      <wsdl:output message="tns:RemoverCanalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoverPrograma">
+      <wsdl:input message="tns:RemoverProgramaSoapIn" />
+      <wsdl:output message="tns:RemoverProgramaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GuiaProgramacaoTVSoap" type="tns:GuiaProgramacaoTVSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CadastrarCanal">
+      <soap:operation soapAction="http://guiaTv.org/CadastrarCanal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarPrograma">
+      <soap:operation soapAction="http://guiaTv.org/CadastrarPrograma" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TodosCanais">
+      <soap:operation soapAction="http://guiaTv.org/TodosCanais" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TodaProgramacaoIdCanal">
+      <soap:operation soapAction="http://guiaTv.org/TodaProgramacaoIdCanal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TodaProgramacaoPorData">
+      <soap:operation soapAction="http://guiaTv.org/TodaProgramacaoPorData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TodaProgramacaoIdCanalData">
+      <soap:operation soapAction="http://guiaTv.org/TodaProgramacaoIdCanalData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoverCanal">
+      <soap:operation soapAction="http://guiaTv.org/RemoverCanal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoverPrograma">
+      <soap:operation soapAction="http://guiaTv.org/RemoverPrograma" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GuiaProgramacaoTVSoap12" type="tns:GuiaProgramacaoTVSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CadastrarCanal">
+      <soap12:operation soapAction="http://guiaTv.org/CadastrarCanal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarPrograma">
+      <soap12:operation soapAction="http://guiaTv.org/CadastrarPrograma" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TodosCanais">
+      <soap12:operation soapAction="http://guiaTv.org/TodosCanais" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TodaProgramacaoIdCanal">
+      <soap12:operation soapAction="http://guiaTv.org/TodaProgramacaoIdCanal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TodaProgramacaoPorData">
+      <soap12:operation soapAction="http://guiaTv.org/TodaProgramacaoPorData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TodaProgramacaoIdCanalData">
+      <soap12:operation soapAction="http://guiaTv.org/TodaProgramacaoIdCanalData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoverCanal">
+      <soap12:operation soapAction="http://guiaTv.org/RemoverCanal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoverPrograma">
+      <soap12:operation soapAction="http://guiaTv.org/RemoverPrograma" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GuiaProgramacaoTV">
+    <wsdl:port name="GuiaProgramacaoTVSoap" binding="tns:GuiaProgramacaoTVSoap">
+      <soap:address location="http://localhost:1239/Servers/GuiaProgramacaoTV.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GuiaProgramacaoTVSoap12" binding="tns:GuiaProgramacaoTVSoap12">
+      <soap12:address location="http://localhost:1239/Servers/GuiaProgramacaoTV.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "TodaProgramacaoData";
+}
+
+<h2>TodaProgramacaoData</h2>
+
+
+@using (Html.BeginForm("ExibeProgramacaoData", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Programa</h4>
+        <hr />
+        
+        <div class="form-group">            
+            <div class="col-md-10">
+                @Html.TextBox("data", DateTime.Now, new Dictionary<string, object>() { { "class", "form-control" }, { "type", "date" }, { "value", "01/12/2016" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
